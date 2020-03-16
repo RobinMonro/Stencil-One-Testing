@@ -5,7 +5,6 @@ import { UpdatedValue } from '../date-resources';
 @Component({
   tag: 'date-time-input',
   shadow: true,
-  styleUrls: ['date-time-input.css']
 })
 export class DateTimeInput {
   @Prop({ mutable: true, reflect: true }) public value?: string;
@@ -18,32 +17,25 @@ export class DateTimeInput {
   @Event() public updateValue: EventEmitter<UpdatedValue>;
 
   private onChange(event: Event): void {
-    console.log('onchange happened!');
     const value = (event.target as HTMLInputElement).value;
     this._value = value;
     this.updateInputValue(parseInt(value));
   }
   
   private blur(event: any): void {
-    console.log('blur was successful!');
     const value = (event.target as HTMLInputElement).value;
     this._value = value;
     this.updateInputValue(parseInt(value));
   }
 
   private onInput(event: Event): void {
-    console.log('onInput happened!');
     const value = (event.target as HTMLInputElement).value;
     this._value = value;
     this.updateInputValue(parseInt(value));
   }
 
   private updateInputValue(newValue: number | undefined): void {
-    let val = `${newValue}`;
-    while (val.length < 2) {
-      val = `0${val}`;
-    }
-    console.log('emitting updatevalue with', val, this.name);
+    const val = newValue ? `${newValue}` : '';
     this.updateValue.emit(new UpdatedValue(this.name, val));
   }
 

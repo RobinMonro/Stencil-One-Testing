@@ -1,3 +1,14 @@
 # Stencil-One-Testing
 
-I've been struggling to get Puppeteer to look through two layers of shadow doms, so I made this to show off my hassles.
+Second level shadow-DOM selecting not working.
+The issue at hand is found in ./e2etest/src/components/date/date.e2e.ts
+
+From ./e2etest/ :
+
+To run the test use npm run test use
+`npm run test`
+
+To see the date input using three date-time-input components use
+`npm run start` 
+
+

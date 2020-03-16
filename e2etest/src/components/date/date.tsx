@@ -25,19 +25,15 @@ export class DateInput {
   // ** Event Handlers */
   @Listen('updateValue')
   protected updateValue(e: CustomEvent<UpdatedValue>): void {
-    console.log('received updatevalue', e.detail.value, e.detail.id);
     const newVal = e.detail.value;
     switch (e.detail.id) {
       case Parts.Year:
-        console.log('year updated with', newVal);
         this.year = newVal;
         break;
       case Parts.Month:
-        console.log('month updated with', newVal);
         this.month = newVal;
         break;
       case Parts.Day:
-        console.log('day updated with', newVal);
         this.day = newVal;
         break;
       default:
@@ -84,7 +80,6 @@ export class DateInput {
     if (!!this.input) {
       const value = new UpdatedValue(this.name, this.input);
       this._value = this.input;
-      console.log('emitting date', value);
       this.updateDate.emit(value);
     }
   }

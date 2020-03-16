@@ -24,33 +24,18 @@ describe('date time number', () => {
       expect(element.tagName).toBe('DATE-TIME-INPUT');
     });
 
-    it('should work without parameters or data', async () => {
-      expect(element.textContent.trim()).toEqual('');
-    });
-
     describe(`interactions`, () => {
-      let input;
-      let updateValueSpy;
-      let name;
-      beforeEach(async () => {
-        await element.setProperty('value', '0');
-        await page.waitForChanges();
-        input = await page.find('date-time-input >>> input');
-        updateValueSpy = await element.spyOnEvent('updateValue');
-        name = await element.getProperty('name');
-      });
-
       it(`entering a number should make it not empty`, async () => {
-        let value = await element.getProperty('value');
-        expect(value).toBe('0');
-        await page.waitForChanges();
+        const input = await page.find('date-time-input >>> input');
+        const updateValueSpy = await page.spyOnEvent('updateValue');
+        expect(input).toBeTruthy();
 
         await input.press('1');
         await input.press('0');
         await page.waitForChanges();
 
         expect(updateValueSpy).toHaveReceivedEventDetail({
-          id: name,
+          id: 'day',
           value: '10'
         });
       });

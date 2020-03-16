@@ -1,6 +1,7 @@
 dist/
 !www/favicon.ico
 www/
+node_modules
 
 *~
 *.sw[mnpcod]

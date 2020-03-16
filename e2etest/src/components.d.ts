@@ -8,17 +8,10 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  MatchResults,
-} from '@stencil/router';
-import {
   UpdatedValue,
 } from './components/date-resources';
 
 export namespace Components {
-  interface AppHome {}
-  interface AppProfile {
-    'match': MatchResults;
-  }
   interface AppRoot {}
   interface DateTimeInput {
     'max'?: number;
@@ -34,18 +27,6 @@ export namespace Components {
 
 declare global {
 
-
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
-  };
-
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
@@ -65,8 +46,6 @@ declare global {
     new (): HTMLTestDateElement;
   };
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
     'date-time-input': HTMLDateTimeInputElement;
     'test-date': HTMLTestDateElement;
@@ -74,10 +53,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface AppHome {}
-  interface AppProfile {
-    'match'?: MatchResults;
-  }
   interface AppRoot {}
   interface DateTimeInput {
     'max'?: number;
@@ -93,8 +68,6 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'app-home': AppHome;
-    'app-profile': AppProfile;
     'app-root': AppRoot;
     'date-time-input': DateTimeInput;
     'test-date': TestDate;
@@ -107,8 +80,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-      'app-profile': LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'date-time-input': LocalJSX.DateTimeInput & JSXBase.HTMLAttributes<HTMLDateTimeInputElement>;
       'test-date': LocalJSX.TestDate & JSXBase.HTMLAttributes<HTMLTestDateElement>;
