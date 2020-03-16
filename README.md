@@ -1,7 +1,7 @@
 # Stencil-One-Testing
 
 Second level shadow-DOM selecting not working.
-The issue at hand is found in ./e2etest/src/components/date/date.e2e.ts
+The issue at hand is found in `./e2etest/src/components/date/date.e2e.ts`
 
 From ./e2etest/ :
 
