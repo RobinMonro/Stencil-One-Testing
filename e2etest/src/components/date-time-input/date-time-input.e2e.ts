@@ -47,7 +47,6 @@ describe('date time number', () => {
 
         await input.press('1');
         await input.press('0');
-        await element.click();
         await page.waitForChanges();
 
         expect(updateValueSpy).toHaveReceivedEventDetail({
