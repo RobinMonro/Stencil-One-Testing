@@ -1,15 +1,7 @@
-import {
-  Component,
-  Event,
-  EventEmitter,
-  h,
-  JSX,
-  Prop,
-  State
-} from "@stencil/core";
+import { Component, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
 
 @Component({
-  tag: "date-number",
+  tag: 'date-number',
   shadow: true
 })
 export class DateNumber {
@@ -18,7 +10,7 @@ export class DateNumber {
   @Prop() public max?: number;
   @Prop() public min?: number;
 
-  @State() private _value: string = "";
+  @State() private _value: string = '';
 
   @Event() public updateValue: EventEmitter<string[]>;
 
@@ -41,21 +33,21 @@ export class DateNumber {
   }
 
   private updateInputValue(newValue: number | undefined): void {
-    const val = newValue ? `${newValue}` : "";
+    const val = newValue ? `${newValue}` : '';
     this.updateValue.emit([this.name, val]);
   }
 
   public render(): JSX.Element {
     return (
-      <span class="input">
+      <span class='input'>
         <input
-          type="number"
+          type='number'
           onChange={this.onChange.bind(this)}
           onInput={this.onInput.bind(this)}
           onBlur={this.blur.bind(this)}
-          value={this._value}
           max={this.max}
           min={this.min}
+          value={this._value}
         />
       </span>
     );

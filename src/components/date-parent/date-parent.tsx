@@ -1,22 +1,13 @@
-import {
-  Component,
-  Event,
-  EventEmitter,
-  h,
-  JSX,
-  Listen,
-  Prop,
-  State
-} from "@stencil/core";
+import { Component, Event, EventEmitter, h, JSX, Listen, Prop, State } from '@stencil/core';
 
 enum Parts {
-  Year = "year",
-  Month = "month",
-  Day = "day"
+  Year = 'year',
+  Month = 'month',
+  Day = 'day'
 }
 
 @Component({
-  tag: "date-parent",
+  tag: 'date-parent',
   shadow: true
 })
 export class DateParent {
@@ -29,7 +20,7 @@ export class DateParent {
   @Event() public updateDate: EventEmitter<string>;
 
   // ** Event Handlers */
-  @Listen("updateValue")
+  @Listen('updateValue')
   protected handleChildUpdate(e: CustomEvent<string[]>): void {
     const [id, newVal] = e.detail;
     switch (id) {
@@ -57,17 +48,15 @@ export class DateParent {
     } else if (!!year) {
       return year;
     }
-    return "";
+    return '';
   }
 
   protected render(): JSX.Element {
     return (
-      <div class="date-input">
-        <span class="date">
-          <date-number name="day" class="day" max={31} min={0} />/
-          <date-number class="month" name="month" max={12} min={0} />/
-          <date-number class="year" name="year" min={1900} />
-        </span>
+      <div class='date-input'>
+        <date-number name='day' class='day' max={31} min={0} />/
+        <date-number class='month' name='month' max={12} min={0} />/
+        <date-number class='year' name='year' min={1900} />
       </div>
     );
   }
