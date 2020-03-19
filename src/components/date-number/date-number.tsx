@@ -1,27 +1,33 @@
-import { Component, Event, EventEmitter, h, JSX, Prop, State } from '@stencil/core';
-import { UpdatedValue } from '../date-resources';
-
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  JSX,
+  Prop,
+  State
+} from "@stencil/core";
 
 @Component({
-  tag: 'date-time-input',
-  shadow: true,
+  tag: "date-number",
+  shadow: true
 })
-export class DateTimeInput {
+export class DateNumber {
   @Prop({ mutable: true, reflect: true }) public value?: string;
   @Prop() public name: string;
   @Prop() public max?: number;
   @Prop() public min?: number;
 
-  @State() private _value: string = '';
+  @State() private _value: string = "";
 
-  @Event() public updateValue: EventEmitter<UpdatedValue>;
+  @Event() public updateValue: EventEmitter<string[]>;
 
   private onChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this._value = value;
     this.updateInputValue(parseInt(value));
   }
-  
+
   private blur(event: any): void {
     const value = (event.target as HTMLInputElement).value;
     this._value = value;
@@ -35,15 +41,15 @@ export class DateTimeInput {
   }
 
   private updateInputValue(newValue: number | undefined): void {
-    const val = newValue ? `${newValue}` : '';
-    this.updateValue.emit(new UpdatedValue(this.name, val));
+    const val = newValue ? `${newValue}` : "";
+    this.updateValue.emit([this.name, val]);
   }
 
   public render(): JSX.Element {
     return (
-      <span class='input'>
+      <span class="input">
         <input
-          type='number'
+          type="number"
           onChange={this.onChange.bind(this)}
           onInput={this.onInput.bind(this)}
           onBlur={this.blur.bind(this)}
