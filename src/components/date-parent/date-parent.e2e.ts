@@ -22,7 +22,7 @@ describe('date', () => {
       let day: E2EElement;
       let dayInput: E2EElement;
 
-      describe('day only', () => {
+      describe('hacky approach', () => {
         it('should respond to inputs', async () => {
           day = await page.find('date-parent >>> date-number.day'); // This line works just fine
           const E: any = day.constructor;
@@ -36,6 +36,17 @@ describe('date', () => {
             )
             .then(handle => new E(page, handle.asElement()));
 
+          expect(day).toBeTruthy();
+          expect(dayInput).toBeTruthy();
+          expect(day.constructor.name).toBe('E2EElement');
+          expect(dayInput.constructor.name).toBe('E2EElement');
+        });
+      });
+
+      describe('better approach', () => {
+        it('should respond to inputs', async () => {
+          day = await page.find('date-parent >>> .date-input'); // In one level
+          dayInput = await day.find('date-number.day >>> input');
           expect(day).toBeTruthy();
           expect(dayInput).toBeTruthy();
           expect(day.constructor.name).toBe('E2EElement');
